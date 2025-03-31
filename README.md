@@ -145,6 +145,9 @@ python app.py
 4. Push to the branch
 5. Create a new Pull Request
 
+## Dataset
+https://www.kaggle.com/datasets/valakhorasani/bank-transaction-dataset-for-fraud-detection
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
