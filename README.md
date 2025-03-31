@@ -1,110 +1,141 @@
-# Enhanced Fraud Detection System
+# AI Maverick Fraud Detection System
 
-A comprehensive fraud detection system that combines machine learning models with contextual insights, real-time alerts, and interactive visualizations.
+A comprehensive fraud detection system with a modern web interface, real-time monitoring, and interactive analytics dashboard.
 
 ## Features
 
-- **Advanced Fraud Detection**: Uses ensemble of machine learning models (Random Forest, Gradient Boosting, Neural Networks)
-- **Contextual Insights**: Detailed analysis of contributing factors for each transaction
-- **Real-time Alerts**: Email notifications for high-risk transactions
-- **Interactive Dashboard**: Real-time monitoring of fraud trends and system performance
-- **Regulatory Compliance**: Built-in checks for regulatory concerns
-- **Explainable AI**: LIME-based explanations for model predictions
+- *Web-based Interface*: Modern Flask application with secure authentication
+- *Real-time Fraud Detection*: Instant analysis of transactions using advanced algorithms
+- *Interactive Analytics Dashboard*: Visual insights into fraud patterns and trends
+- *Risk Assessment*: Multi-level risk scoring (High, Medium, Low)
+- *Transaction Management*: Upload, view, and manage transactions
+- *Admin Panel*: Secure administrative interface for system management
+- *API Endpoints*: RESTful API for integration with other systems
+- *Data Visualization*: Interactive charts and graphs using Chart.js
+- *Secure Authentication*: Role-based access control with admin privileges
+- *File Processing*: Support for CSV file uploads and processing
+
+## Technologies Used
+
+- Flask (Web Framework)
+- Pandas (Data Processing)
+- SQLAlchemy (Database ORM)
+- Flask-Login (Authentication)
+- Chart.js (Data Visualization)
+- NumPy (Numerical Computations)
+- Python logging (System Monitoring)
+- RESTful API architecture
+- JWT (Authentication)
+- CSV/JSON (Data Formats)
 
 ## Installation
 
 1. Clone the repository:
-```bash
+bash
 git clone <repository-url>
-cd fraud-detection-system
-```
+cd ai-maverick-fraud-detection
 
-2. Install dependencies:
-```bash
+
+2. Create and activate a virtual environment:
+bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+
+3. Install dependencies:
+bash
 pip install -r requirements.txt
-```
 
-3. Configure email alerts:
-   - Update the SMTP configuration in `insights_and_alerts.py`
-   - Set your email credentials and server details
+
+4. Set up environment variables:
+bash
+cp .env.example .env
+# Edit .env with your configuration
+
 
 ## Usage
 
-1. Prepare your transaction data in CSV format with the following columns:
-   - TransactionID
-   - TransactionDate
-   - TransactionAmount
-   - AccountID
-   - CustomerAge
-   - CustomerOccupation
-   - TransactionType
-   - Channel
-   - Location
-   - DeviceID
-   - IP Address
-   - MerchantID
-   - AccountBalance
-   - LoginAttempts
-   - TransactionDuration
-   - PreviousTransactionDate
-   - is_fraud (optional, for training)
+1. Start the Flask application:
+bash
+python app.py
 
-2. Run the fraud detection system:
-```bash
-python fraud_detection.py
-```
 
-3. Access the dashboard:
-   - Open your web browser and navigate to `http://localhost:8050`
-   - View real-time fraud trends and insights
+2. Access the web interface:
+   - Open your browser and navigate to http://localhost:5000
+   - Default admin credentials:
+     - Username: admin
+     - Password: admin@123
+
+3. Upload Transaction Data:
+   - Prepare your CSV file with required columns:
+     - TransactionID
+     - TransactionDate
+     - TransactionAmount
+     - AccountID
+     - DeviceID
+     - Location
+
+4. View Analytics:
+   - Access the dashboard for real-time insights
+   - View risk distributions and trends
+   - Analyze transaction patterns
 
 ## System Components
 
-### 1. Fraud Detection Core
-- Feature engineering and preprocessing
-- Ensemble model training and prediction
-- Risk scoring and classification
+### 1. Web Interface
+- Secure login system
+- Interactive dashboard
+- Transaction management
+- File upload functionality
+- Real-time analytics
 
-### 2. Insights Generation
-- Detailed analysis of contributing factors
-- Historical context analysis
-- Regulatory compliance checks
-- Actionable recommendations
+### 2. Fraud Detection
+- Risk scoring system
+- Anomaly detection
+- Pattern recognition
+- Real-time analysis
 
-### 3. Alert System
-- Real-time email notifications
-- Risk level classification
-- Detailed HTML reports
-- Configurable alert thresholds
+### 3. Analytics Dashboard
+- Risk distribution charts
+- Fraud trend analysis
+- Transaction monitoring
+- Risk factor analysis
 
-### 4. Interactive Dashboard
-- Real-time risk score distribution
-- Fraud trend visualization
-- Top risk factors analysis
-- Recent alerts table
-- Auto-refresh every 5 minutes
+### 4. Admin Features
+- User management
+- System configuration
+- Data management
+- Analytics access
 
-## Configuration
+## API Endpoints
 
-### Risk Thresholds
-- CRITICAL: > 0.8
-- HIGH: > 0.6
-- MEDIUM: > 0.4
-- LOW: ≤ 0.4
+### Authentication
+- POST /login - User login
+- GET /logout - User logout
 
-### Regulatory Checks
-- Large transactions (> $10,000)
-- Rapid transaction patterns
-- Unusual time patterns
-- Multiple device usage
+### Transaction Management
+- POST /api/upload - Upload transaction data
+- POST /api/transaction/new - Add new transaction
+- GET /api/transaction/<id> - Get transaction details
 
-## Output Files
+### Analytics
+- GET /api/dashboard-stats - Dashboard statistics
+- GET /api/risk-distribution - Risk distribution data
+- GET /api/fraud-trends - Fraud trend analysis
+- GET /api/risk-factors - Risk factor analysis
 
-- `DATASET_with_fraud_scores.csv`: Complete dataset with fraud scores and labels
-- `fraud_label_*.csv`: Separate files for each fraud label category
-- `fraud_label_summary.csv`: Summary statistics for fraud labels
-- `lime_explanation_*.html`: LIME explanations for selected transactions
-- `feature_importance_lime.csv`: Feature importance rankings
+### Admin
+- GET /api/admin/transactions - List all transactions
+- POST /api/admin/update-label - Update transaction labels
+
+## Security Features
+
+- Secure authentication system
+- Role-based access control
+- Input validation
+- Error handling
+- Secure file processing
+- Session management
 
 ## Contributing
 
@@ -116,4 +147,4 @@ python fraud_detection.py
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
